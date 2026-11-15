@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10131d">
+  <link rel="icon" href="icon.png"><link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <title>Set up MirOS</title>
+</head>
+<body class="setup-body">
+  <main id="setupRoot" class="setup-shell">
+    <aside class="setup-side">
+      <div class="setup-brand"><img src="icon.png" alt="" onerror="this.style.display='none'"><span>MirOS</span></div>
+      <div class="setup-side-copy"><div class="eyebrow">FIRST-TIME SETUP</div><h1>Make this<br>space yours.</h1><p>Set up a local profile and make this workspace yours.</p></div>
+      <div class="setup-progress"><div class="progress-line"><span id="setupProgressBar"></span></div><div><span id="setupStepText">Step 1 of 34</span><span id="setupPercent">3%</span></div></div>
+      <div class="setup-side-foot">MirOS Browser Edition</div>
+    </aside>
+    <section class="setup-main">
+      <header class="setup-top"><span id="setupStage">WELCOME</span><button class="quiet-btn" id="setupExit" type="button">Exit setup</button></header>
+      <div class="setup-content" id="setupContent"></div>
+      <footer class="setup-actions"><button class="btn secondary" id="setupBack" type="button" hidden>Back</button><span class="setup-hint" id="setupHint">Your choices stay on this browser.</span><button class="btn primary" id="setupNext" type="button">Get started <span aria-hidden="true">→</span></button></footer>
+    </section>
+  </main>
+  <script src="app.js"></script>
+  <script>window.addEventListener('DOMContentLoaded',()=>MirOS.setup());</script>
+</body>
+</html>

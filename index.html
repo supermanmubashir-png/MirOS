@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10131d">
+  <meta name="description" content="MirOS — a browser-based personal operating environment">
+  <link rel="icon" href="icon.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <title>MirOS</title>
+</head>
+<body class="boot-body">
+  <main class="boot-screen" aria-live="polite">
+    <div class="boot-glow"></div>
+    <div class="boot-brand">
+      <img class="boot-logo" src="icon.png" alt="MirOS" onerror="this.style.display='none'">
+      <div class="boot-wordmark">Mir<span>OS</span></div>
+      <div class="boot-tagline">A space for everything</div>
+    </div>
+    <div class="boot-loader" role="img" aria-label="Indeterminate startup animation"><span></span></div>
+    <div class="boot-status" id="bootStatus">Starting MirOS…</div>
+    <div class="boot-version">M I R O S &nbsp; • &nbsp; B R O W S E R E D I T I O N</div>
+  </main>
+  <noscript><p class="noscript">MirOS needs JavaScript enabled to start.</p></noscript>
+  <script src="app.js"></script>
+  <script>window.addEventListener('DOMContentLoaded',()=>MirOS.boot());</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10131d">
+  <meta name="description" content="MirOS browser desktop">
+  <link rel="icon" href="icon.png"><link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <title>MirOS Desktop</title>
+</head>
+<body class="desktop-body">
+  <main id="desktop" class="desktop">
+    <div class="wallpaper-layer"></div>
+    <div class="desktop-shade"></div>
+    <section class="desktop-icons" id="desktopIcons" aria-label="Desktop shortcuts"></section>
+    <section class="window-layer" id="windowLayer" aria-label="Open applications"></section>
+    <section class="desktop-overlay" id="desktopOverlay"></section>
+    <nav class="taskbar" id="taskbar" aria-label="Taskbar">
+      <button class="task-start" id="startButton" aria-label="Start menu"><img src="icon.png" alt="" onerror="this.style.display='none'"></button>
+      <button class="task-search" id="taskSearch"><span>⌕</span><span>Search apps, files and settings</span></button>
+      <div class="task-pins" id="taskPins"></div>
+      <div class="task-spacer"></div>
+      <div class="task-system-tray" id="taskSystemTray" aria-label="System controls">
+        <button class="task-tray-icon" id="taskHelp" title="MirOS Help Center" aria-label="MirOS Help Center">?</button>
+        <button class="task-tray-icon" id="taskAbout" title="About MirOS" aria-label="About MirOS">ⓘ</button>
+        <button class="task-tray-icon" id="taskSearchIcon" title="Search" aria-label="Search">⌕</button>
+        <button class="task-tray-icon" id="taskDesktops" title="Virtual desktops" aria-label="Virtual desktops">▦</button>
+        <button class="task-tray-icon" id="taskNotifications" title="Notifications" aria-label="Notifications">♧</button>
+        <button class="task-tray-icon task-network" id="taskQuick" title="Quick settings" aria-label="Network and sound quick settings"><span>◉</span><span id="taskNetworkLabel">Online</span><span class="task-volume-glyph">◖))</span></button>
+        <button class="task-clock" id="taskClock" title="Calendar" aria-label="Calendar"><span id="taskDate">Sun, Nov 15</span><strong id="taskTime">12:00 PM</strong></button>
+        <button class="task-tray-icon task-power" id="taskPower" title="Power and session" aria-label="Power and session">⏻</button>
+      </div>
+    </nav>
+    <section id="startMenu" class="start-menu glass-panel" hidden></section>
+    <section id="searchPanel" class="search-panel glass-panel" hidden></section>
+    <section id="quickPanel" class="quick-panel glass-panel" hidden></section>
+    <section id="notificationPanel" class="notification-panel glass-panel" hidden></section>
+    <section id="desktopPanel" class="quick-panel glass-panel" hidden></section>
+    <section id="calendarPanel" class="calendar-panel glass-panel" hidden></section>
+    <section id="contextMenu" class="context-menu glass-panel" hidden></section>
+    <div id="toastArea" class="toast-area" aria-live="polite"></div>
+    <div id="modalRoot"></div>
+    <div id="altTabOverlay" class="alt-tab-overlay" hidden></div>
+    <section id="webAppLayer" class="web-app-layer" aria-label="Fullscreen web application" hidden>
+      <iframe id="webAppFrame" title="Web application" referrerpolicy="strict-origin-when-cross-origin" allow="clipboard-read; clipboard-write; fullscreen; camera; microphone; geolocation"></iframe>
+      <div class="web-app-controls" aria-label="Web app controls">
+        <button id="webAppOpenExternal" title="Open this website in a browser tab" aria-label="Open in browser">↗</button>
+        <button id="webAppExit" title="Return to MirOS" aria-label="Return to MirOS">✕</button>
+      </div>
+    </section>
+    <section id="lockScreen" class="lock-screen" aria-label="MirOS lock screen" hidden>
+      <div class="lock-screen-wallpaper" id="lockScreenWallpaper"></div>
+      <button type="button" class="lock-clock-stage" id="lockClockStage" aria-label="Tap or press a key to continue to sign in">
+        <div class="lock-time" id="lockTime">12:00</div>
+        <div class="lock-date" id="lockDate">Sunday, November 15</div>
+      </button>
+      <section class="lock-signin-stage" id="lockSignInStage" hidden aria-label="Sign in to MirOS">
+        <button type="button" class="lock-back-clock" id="lockBackToClock" aria-label="Back to lock screen">←</button>
+        <div class="lock-profile"><div class="lock-avatar" id="lockAvatar">🙂</div><strong id="lockProfileName">Guest</strong></div>
+        <div id="lockAuthControls" class="lock-auth-controls"></div>
+        <p class="lock-security-note">MirOS has its own browser-session lock. It does not replace Windows device security.</p>
+      </section>
+    </section>
+    <section id="updateScreen" class="update-screen" hidden aria-live="polite">
+      <div class="update-glow"></div>
+      <div class="update-brand"><span class="update-mark">M</span><div><strong>MirOS Update</strong><small>Browser Edition</small></div></div>
+      <div class="update-main"><div class="update-orbit"><span></span><i></i></div><h1 id="updateTitle">Checking for updates</h1><p id="updateMessage">Connecting to the installed MirOS service worker…</p><div class="update-steps" id="updateSteps"><span class="current">Checking installed version</span><span>Looking for a newer build</span><span>Preparing update if available</span></div><div class="update-actions"><button type="button" class="os-btn" id="updateClose">Return to Settings</button><button type="button" class="os-btn primary" id="updateApply" hidden>Restart to update</button></div></div>
+    </section>
+    <section id="sleepScreen" class="power-screen sleep-screen" hidden><div class="power-screen-card"><div class="power-screen-mark">M</div><h1>MirOS is sleeping</h1><p>Tap or press any key to wake up.</p></div></section>
+    <section id="powerScreen" class="power-screen shutdown-screen" hidden aria-live="polite"><div class="shutdown-backdrop"></div><div class="power-screen-card shutdown-card"><div class="power-screen-mark shutdown-mark">M</div><div class="shutdown-line"><span></span></div><h1>Shutting down MirOS</h1><p>Closing apps and saving your workspace…</p><button type="button" class="os-btn primary" id="powerOnButton" hidden>Power on MirOS</button></div></section>
+  </main>
+  <script src="app.js"></script>
+  <script>window.addEventListener('DOMContentLoaded',()=>MirOS.start());</script>
+</body>
+</html>
