@@ -16,25 +16,7 @@ The project contains exactly nine source/documentation files:
 8. `help.html` — end-user Help Center.
 9. `readme.md` — this documentation.
 
-## User-supplied assets
 
-Keep these assets beside the nine files. They are referenced by the project but are not included in the source ZIP:
-
-- `icon.png` — MirOS icon used by the page and PWA manifest.
-- `wallpaper.png` — default wallpaper (Wallpaper 1).
-- `wallpaper2.png` — alternate wallpaper (Wallpaper 2).
-
-File names are case-sensitive on many hosting services. Upload all assets to the same project directory as `home.html`.
-
-## Install and run
-
-1. Upload the nine project files and three user-supplied assets to the same HTTPS site directory.
-2. Open `index.html` in a modern browser.
-3. Complete the first-time setup wizard.
-4. After setup, MirOS returns to the boot screen and then the lock screen.
-5. Install optional website apps from MirStore. MirCodeStudio is included by default.
-
-For PWA installation and service-worker/offline support, serve MirOS from HTTPS (for example, GitHub Pages). Direct `file://` opening does not provide service-worker support and may restrict browser APIs.
 
 ## Features
 
@@ -42,11 +24,13 @@ For PWA installation and service-worker/offline support, serve MirOS from HTTPS 
 - Expanded setup wizard with wallpaper image choices, profile, region, display, accessibility, sound, network, local backup, app selection, mobile layout and motion preferences.
 - Two-stage lock screen with clock/wallpaper followed by the selected unlock interface.
 - Desktop shortcuts, grid placement, taskbar pins, Start Menu and app windows.
-- MirStore with optional website app installation.
+- MirStore with large categorized app cards, search and Installed / Websites / MirOS apps filters.
+- Add Web App lets you register a custom HTTP or HTTPS website with a name, icon, category and description; your list is saved in browser storage and included in backups.
+- Expanded website collection including GitHub, Google Drive, Google Docs, Google Sheets, Canva, Photopea, Scratch, Khan Academy, GeoGebra, Desmos, Wikipedia and CodePen.
 - Wallpaper Studio with `wallpaper.png`, `wallpaper2.png`, built-in backgrounds and custom image support.
 - Local profile and browser-managed virtual files.
 - Sound effects, settings, notifications and offline shell caching.
-- Responsive layout for desktop, tablets and phones.
+- Responsive layout for desktop, tablets and phones, with touch-friendly navigation and dedicated scrolling for long setup pages and MirStore.
 - Help Center at `help.html`.
 
 ## Storage and privacy
