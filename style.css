@@ -535,3 +535,142 @@ button,.choice-card,.desktop-shortcut,.task-pin{touch-action:manipulation}
 @media(prefers-reduced-motion:reduce){.setup-content.step-enter>*{animation:none!important}.setup-wallpaper-choice,.choice-card{transition:none!important}}
 
 .setup-wallpaper-choice.wallpaper-file-missing::before{content:"Wallpaper image not found — add this PNG beside the MirOS files";display:grid;place-items:center;min-height:110px;padding:18px;text-align:center;color:#fff;font-size:11px;background:linear-gradient(135deg,#293a61,#162538);border-radius:11px}
+
+/* MirOS responsive repair — reliable nested scrolling, larger categorized store cards. */
+.setup-body{height:100%;min-height:100dvh;overflow:hidden;overscroll-behavior:none}
+.setup-shell{height:100dvh;min-height:100dvh;min-width:0;overflow:hidden}
+.setup-main{min-width:0;min-height:0;overflow:hidden}
+.setup-top{flex:0 0 auto}
+.setup-content{flex:1 1 0;min-width:0;min-height:0;max-height:none;overflow-x:hidden;overflow-y:auto;justify-content:flex-start;align-items:stretch;overscroll-behavior-y:contain;scrollbar-gutter:stable;touch-action:pan-y;-webkit-overflow-scrolling:touch}
+.setup-content>*{flex:0 0 auto;max-width:100%}
+.setup-content .setup-grid,.setup-content .setup-wallpaper-grid,.setup-content .app-pick-grid{flex:0 0 auto}
+.setup-content .app-pick-grid{max-height:none!important;overflow:visible!important}
+.setup-actions{flex:0 0 auto;min-width:0}
+.setup-content::-webkit-scrollbar{width:8px}
+.setup-content::-webkit-scrollbar-thumb{background:#8c91a644;border-radius:99px}
+.setup-content::-webkit-scrollbar-track{background:transparent}
+
+.window-content.mirstore-window-content{display:flex;flex:1 1 auto;flex-direction:column;min-width:0;min-height:0;height:100%;padding:0!important;overflow:hidden!important;overscroll-behavior:contain}
+.mirstore-window-content>.mirstore-shell{flex:1 1 auto;width:100%;height:100%;min-width:0;min-height:0;max-height:100%;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;scrollbar-gutter:stable}
+.mirstore-redesign .mirstore-hero{align-items:center;min-height:205px;padding:clamp(18px,2.5vw,30px)}
+.mirstore-hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:17px}
+.mirstore-add-web{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:42px;padding:0 16px;border:1px solid #ffffff55;border-radius:13px;background:linear-gradient(135deg,#c4f3e6,#8bdac9);color:#102d37;font-size:12px;font-weight:850;box-shadow:0 7px 18px #071c263b;transition:transform .18s ease,box-shadow .18s ease}
+.mirstore-add-web:hover{transform:translateY(-2px);box-shadow:0 12px 24px #071c264d}
+.mirstore-add-web span{font-size:19px;line-height:1}
+.mirstore-hero-hint{font-size:10px;color:#e0edf4}
+.mirstore-toolbar{display:flex;align-items:center;gap:12px;margin:18px 0 10px}
+.mirstore-toolbar .mirstore-search{flex:1;min-width:0}
+.mirstore-categories{max-width:100%;padding:5px 1px 12px;scrollbar-width:thin;touch-action:pan-x}
+.mirstore-filter-tabs{flex-wrap:wrap}
+.mirstore-filter-tabs button{min-height:34px;padding:8px 13px}
+.mirstore-section{margin-top:22px}
+.mirstore-section-title{align-items:center;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.mirstore-section-title .mirstore-eyebrow{margin-bottom:5px}
+.mirstore-section-title h2{font-size:clamp(17px,2vw,21px);letter-spacing:-.02em}
+.mirstore-feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px}
+.mirstore-redesign .mirstore-app-card{position:relative;display:flex;flex-direction:column;align-items:stretch;gap:13px;min-width:0;min-height:252px;padding:18px;border-radius:20px;background:linear-gradient(150deg,color-mix(in srgb,var(--surface-2) 96%,var(--accent) 4%),var(--surface-2));border:1px solid var(--line);box-shadow:0 9px 26px #0000000b;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.mirstore-redesign .mirstore-app-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 55%,var(--line));box-shadow:0 16px 32px #00000018}
+.mirstore-redesign .mirstore-app-card.is-installed{border-color:#46c59a75}
+.mirstore-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.mirstore-redesign .mirstore-app-icon{width:58px;height:58px;border-radius:18px;font-size:34px;box-shadow:inset 0 1px #ffffff19}
+.mirstore-kind{display:inline-flex;align-items:center;min-height:25px;padding:5px 9px;border:1px solid var(--line);border-radius:99px;background:var(--surface);color:var(--muted);font-size:8px;font-weight:850;letter-spacing:.1em}
+.mirstore-app-info{flex:1;min-width:0}
+.mirstore-app-info strong{font-size:16px;line-height:1.25;overflow-wrap:anywhere}
+.mirstore-app-info small{display:block;margin-top:5px;font-size:10px;font-weight:750}
+.mirstore-app-info p{margin-top:9px;font-size:11px;line-height:1.55;overflow-wrap:anywhere}
+.mirstore-badge{margin-top:12px;font-size:8px}
+.mirstore-app-action{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:7px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.mirstore-app-action .os-btn{min-width:104px;min-height:38px;padding:9px 12px;font-size:10px}
+.mirstore-remove{min-height:36px;padding:8px 10px;font-size:10px}
+.mirstore-empty{padding:44px 16px;border:1px dashed var(--line);border-radius:18px;margin-top:18px}
+.mirstore-empty>span{display:block;font-size:30px;margin-bottom:9px}
+.mirstore-empty strong{display:block;color:var(--text);font-size:15px;margin-bottom:6px}
+.mirstore-empty p{font-size:11px}
+.mirstore-footer{line-height:1.7;padding-bottom:18px}
+.mirstore-add-dialog{width:min(560px,100%);max-height:min(88dvh,760px);overflow:auto}
+.mirstore-dialog-heading{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+.mirstore-dialog-heading h3{margin:0 0 4px}
+.mirstore-dialog-heading p{margin:0;font-size:11px;line-height:1.5}
+.mirstore-dialog-icon{width:46px;height:46px;display:grid;place-items:center;flex:none;border-radius:15px;background:color-mix(in srgb,var(--accent) 20%,#24304a);font-size:25px}
+.mirstore-dialog-fields{display:grid;grid-template-columns:1fr 130px;gap:10px}
+.mirstore-dialog-note{font-size:10px!important;line-height:1.55!important;padding:10px 12px;border-radius:11px;background:#ffffff0b}
+.mirstore-add-dialog .form-field{min-width:0;margin:10px 0}
+.mirstore-add-dialog .form-field input{min-width:0;width:100%}
+.mirstore-add-dialog .modal-actions{position:sticky;bottom:-22px;padding:12px 0 2px;background:#20263a}
+
+/* Wider small-screen coverage for the complete browser-based desktop. */
+@media(max-width:900px){
+ .setup-shell{grid-template-columns:minmax(220px,30%) minmax(0,1fr)}
+ .setup-side{padding:28px 24px}
+ .setup-main{padding:22px 26px 18px}
+ .mirstore-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .setup-shell{display:flex;flex-direction:column}
+ .setup-side{display:none}
+ .setup-main{display:flex;flex:1 1 auto;width:100%;height:100%;padding:calc(12px + env(safe-area-inset-top)) 16px calc(8px + env(safe-area-inset-bottom));}
+ .setup-content{flex:1 1 0;width:100%;max-width:none;min-height:0;padding:16px 2px 24px;justify-content:flex-start;overflow-y:auto;overscroll-behavior-y:contain;touch-action:pan-y}
+ .setup-content>*{flex-shrink:0}
+ .setup-actions{position:relative;z-index:4;width:100%;max-width:none;gap:9px;padding:10px 0 calc(7px + env(safe-area-inset-bottom));background:#f5f6fa}
+ .setup-actions .btn{min-height:46px}
+ .setup-actions .btn.primary{margin-left:auto}
+ .setup-hint{display:none}
+ .setup-wallpaper-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .mirstore-window-content>.mirstore-shell{padding:14px 13px calc(22px + env(safe-area-inset-bottom))}
+ .mirstore-redesign .mirstore-hero{min-height:0;padding:19px;border-radius:18px}
+ .mirstore-hero-art{display:none}
+ .mirstore-hero-copy{max-width:none;width:100%}
+ .mirstore-hero h1{font-size:34px}
+ .mirstore-hero p{font-size:12px}
+ .mirstore-toolbar{position:sticky;top:-1px;z-index:5;padding:8px 0;background:var(--surface);}
+ .mirstore-search{height:46px}
+ .mirstore-count{font-size:10px}
+ .mirstore-feature-grid{grid-template-columns:1fr;gap:11px}
+ .mirstore-redesign .mirstore-app-card{min-height:0;padding:16px;border-radius:17px}
+ .mirstore-app-info strong{font-size:16px}
+ .mirstore-app-info p{font-size:11px}
+ .mirstore-app-action .os-btn{flex:1 1 auto;min-height:42px}
+ .mirstore-add-web{min-height:44px}
+ .mirstore-dialog-fields{grid-template-columns:minmax(0,1fr) minmax(90px,.7fr)}
+ .window-content{min-height:0;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+ .os-window{max-height:calc(100dvh - 82px - env(safe-area-inset-bottom))!important}
+ .window-layer{bottom:calc(80px + env(safe-area-inset-bottom))!important}
+ .taskbar{padding-bottom:calc(6px + env(safe-area-inset-bottom))!important}
+ .modal-backdrop{padding:10px}
+ .modal-card{max-height:calc(100dvh - 20px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow:auto}
+}
+@media(max-width:480px){
+ .setup-main{padding-left:13px;padding-right:13px}
+ .setup-content h2{font-size:clamp(23px,7vw,30px)}
+ .setup-content .lead{font-size:13px;line-height:1.55}
+ .setup-wallpaper-grid{grid-template-columns:1fr}
+ .setup-wallpaper-choice>img{height:clamp(145px,46vw,190px)}
+ .setup-actions .btn{padding:11px 14px;font-size:12px}
+ .mirstore-hero-meta{gap:6px}
+ .mirstore-hero-meta span{font-size:8px}
+ .mirstore-hero-actions{align-items:flex-start;flex-direction:column;gap:7px}
+ .mirstore-toolbar{gap:8px}
+ .mirstore-search{padding:0 10px}
+ .mirstore-search input{font-size:12px}
+ .mirstore-categories button{min-height:36px;padding:9px 12px;font-size:10px}
+ .mirstore-dialog-fields{grid-template-columns:1fr}
+ .mirstore-add-dialog .modal-actions{bottom:-22px}
+ .taskbar{left:5px!important;right:5px!important;max-width:calc(100% - 10px)!important;min-width:0!important}
+ .task-clock{min-width:48px!important}
+ .os-window{left:4px!important;right:4px!important;border-radius:15px!important}
+ .window-titlebar{gap:6px;padding-left:9px}
+ .window-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .window-content{padding:10px!important}
+ .window-content.mirstore-window-content{padding:0!important}
+}
+@media(max-height:620px){
+ .setup-main{padding-top:10px;padding-bottom:8px}
+ .setup-content{padding-top:10px;padding-bottom:14px}
+ .setup-actions{padding-top:6px}
+ .setup-wallpaper-choice>img{height:110px}
+ .mirstore-redesign .mirstore-hero{min-height:150px}
+}
+@media(hover:none){
+ .mirstore-redesign .mirstore-app-card:hover,.mirstore-add-web:hover{transform:none}
+ .mirstore-categories button,.mirstore-filter-tabs button,.mirstore-app-action button{touch-action:manipulation}
+}
