@@ -1,4 +1,4 @@
-const CACHE_NAME = 'miros-shell-v13';
+const CACHE_NAME = 'miros-shell-v14';
 const CORE_FILES = ['./', './index.html', './setup.html', './home.html', './style.css', './app.js', './manifest.json', './help.html'];
 
 self.addEventListener('install', event => {
